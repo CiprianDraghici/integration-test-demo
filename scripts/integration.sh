@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install jq
 sudo apt-get install git-all
 
-git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf git@github.com:
+# git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf git@github.com:
 
 echo "Installing yarn..."
 npm install --global yarn
