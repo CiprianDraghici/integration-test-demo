@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: github.ref
+          ref: main
       - name: Run script file
         run: |
           chmod +x ./scripts/integration.sh
