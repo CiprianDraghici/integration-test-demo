@@ -1,34 +1,44 @@
 #!/bin/sh
 
+echo "Installing git..."
 sudo apt-get update
 sudo apt-get install git-all
 
-# Install Node.js
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# Install Yarn
+echo "Installing yarn..."
 npm install --global yarn
-# Install Yalc
+echo "Installing yalc..."
 npm install -global yalc
 
-#git config --global url.https://github.com/.insteadOf git://github.com/
-#git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf git@github.com/
-
+echo "Cloning mx-sdk-dapp..."
 git clone https://github.com/multiversx/mx-sdk-dapp.git
+
+echo "Cloning mx-template-dapp..."
 git clone https://github.com/multiversx/mx-template-dapp.git
 
+echo "cd mx-sdk-dapp..."
 cd mx-sdk-dapp
+echo "git checkout development..."
 git checkout development
-yarn install
+echo "Installing dependencies mx-sdk-dapp..."
+yarn
+echo "Building mx-sdk-dapp..."
 yarn build
+echo "Publishing mx-sdk-dapp..."
 cd dist
 yalc publish
+ls -la
 
-cd ../mx-template-dapp
-git checkout main
-yarn install
+echo "cd mx-template-dapp..."
+cd ..
+cd ..
+cd mx-template-dapp
+echo "git checkout main..."
+git checkout integration
+echo "Installing dependencies mx-template-dapp..."
+yarn
+echo "Linking mx-sdk-dapp..."
 yalc link @multiversx/sdk-dapp
+echo "Building mx-template-dapp..."
 yarn build:devnet
 
 # Exit immediately if a command exits with a non-zero status.
