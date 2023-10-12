@@ -1,18 +1,17 @@
 #!/bin/sh
 
+set -e # Exit with nonzero exit code if anything fails
+
 echo "Installing git..."
-sudo apt-get update
 sudo apt-get install jq
 sudo apt-get install git-all
-
-#git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf git@github.com:
 
 echo "Installing yarn..."
 npm install --global yarn
 
 echo "Cloning mx-template-dapp..."
 git clone https://github.com/multiversx/mx-template-dapp.git
-set -e
+
 
 echo "cd mx-template-dapp..."
 cd mx-template-dapp
@@ -34,9 +33,7 @@ cat package.json
 
 echo "Installing dependencies mx-template-dapp..."
 yarn install
-set -e
 echo "Building mx-template-dapp..."
 yarn build:devnet
-set -e
 
 echo "Script executed successfully!"
