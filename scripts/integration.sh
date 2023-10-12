@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install jq
 sudo apt-get install git-all
 
-git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf git@github.com:
+#git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf git@github.com:
 
 echo "Installing yarn..."
 npm install --global yarn
@@ -22,7 +22,8 @@ git checkout integration
 
 # Define the package name and the new version number
 PACKAGE_NAME="@multiversx/sdk-dapp"
-NEW_VERSION="git://github.com/multiversx/mx-sdk-dapp.git#development"
+#NEW_VERSION="git://github.com/multiversx/mx-sdk-dapp.git#development"
+NEW_VERSION="multiversx/mx-sdk-dapp.git#development"
 
 # Use jq to update the sdk-dapp package version in package.json
 jq --arg new_version "$NEW_VERSION" '.dependencies |= . + {("'"$PACKAGE_NAME"'"): $new_version}' package.json > temp.json && mv temp.json package.json
