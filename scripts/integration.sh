@@ -11,7 +11,8 @@ echo "Installing yarn..."
 npm install --global yarn
 
 echo "Cloning mx-template-dapp..."
-set -e git clone https://github.com/multiversx/mx-template-dapp.git
+git clone https://github.com/multiversx/mx-template-dapp.git
+set -e
 
 echo "cd mx-template-dapp..."
 cd mx-template-dapp
@@ -31,8 +32,10 @@ echo "$PACKAGE_NAME version has been updated to $NEW_VERSION"
 cat package.json
 
 echo "Installing dependencies mx-template-dapp..."
-set -e yarn install
+yarn install
+set -e
 echo "Building mx-template-dapp..."
-set -e yarn build:devnet
+yarn build:devnet
+set -e
 
 echo "Script executed successfully!"
