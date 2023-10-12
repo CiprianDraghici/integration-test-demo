@@ -4,40 +4,33 @@ echo "Installing git..."
 sudo apt-get update
 sudo apt-get install git-all
 
+git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf git@github.com:
+
 echo "Installing yarn..."
 npm install --global yarn
-echo "Installing yalc..."
-npm install -global yalc
-
-echo "Cloning mx-sdk-dapp..."
-git clone https://github.com/multiversx/mx-sdk-dapp.git
 
 echo "Cloning mx-template-dapp..."
 git clone https://github.com/multiversx/mx-template-dapp.git
 
-echo "cd mx-sdk-dapp..."
-cd mx-sdk-dapp
-echo "git checkout development..."
-git checkout development
-echo "Installing dependencies mx-sdk-dapp..."
-yarn
-echo "Building mx-sdk-dapp..."
-yarn build
-echo "Publishing mx-sdk-dapp..."
-cd dist
-yalc publish
-ls -la
-
 echo "cd mx-template-dapp..."
-cd ..
-cd ..
 cd mx-template-dapp
 echo "git checkout main..."
+# TODO checkout main
 git checkout integration
+
+# Define the package name and the new version number
+PACKAGE_NAME="@multiversx/sdk-dapp"
+NEW_VERSION="git://github.com/multiversx/mx-sdk-dapp.git#development"
+
+# Replace the version in package.json using sed
+sed -i "s/\"$PACKAGE_NAME\": \".*\"/\"$PACKAGE_NAME\": \"$NEW_VERSION\"/" package.json
+echo "Version of $PACKAGE_NAME updated to $NEW_VERSION"
+
+# Display the new version of the package.json file
+cat package.json
+
 echo "Installing dependencies mx-template-dapp..."
-yarn
-echo "Linking mx-sdk-dapp..."
-yalc link @multiversx/sdk-dapp
+yarn install
 echo "Building mx-template-dapp..."
 yarn build:devnet
 
