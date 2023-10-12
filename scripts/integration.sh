@@ -2,6 +2,15 @@
 
 set -e  # Exit immediately if a command exits with a non-zero status.
 
+# Define a function to handle errors and exit with a custom message
+handle_error() {
+    echo "Error occurred. Script aborted."
+    exit 1
+}
+
+# Set up the trap to call the handle_error function on ERR signal
+trap 'handle_error' ERR
+
 echo "Installing git..."
 sudo apt-get update
 sudo apt-get install jq
