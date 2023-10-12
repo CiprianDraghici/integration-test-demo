@@ -4,7 +4,7 @@ set -e # Exit with nonzero exit code if anything fails
 
 echo "Installing git..."
 sudo apt-get install jq
-sudo apt-get install git-all
+#sudo apt-get install git-all
 
 echo "Installing yarn..."
 npm install --global yarn
