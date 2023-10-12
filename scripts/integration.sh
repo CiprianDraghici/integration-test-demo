@@ -1,16 +1,5 @@
 #!/bin/sh
 
-set -e  # Exit immediately if a command exits with a non-zero status.
-
-# Define a function to handle errors and exit with a custom message
-handle_error() {
-    echo "Error occurred. Script aborted."
-    exit 1
-}
-
-# Set up the trap to call the handle_error function on ERR signal
-trap 'handle_error' ERR
-
 echo "Installing git..."
 sudo apt-get update
 sudo apt-get install jq
@@ -22,7 +11,7 @@ echo "Installing yarn..."
 npm install --global yarn
 
 echo "Cloning mx-template-dapp..."
-git clone https://github.com/multiversx/mx-template-dapp.git
+set -e git clone https://github.com/multiversx/mx-template-dapp.git
 
 echo "cd mx-template-dapp..."
 cd mx-template-dapp
@@ -42,8 +31,8 @@ echo "$PACKAGE_NAME version has been updated to $NEW_VERSION"
 cat package.json
 
 echo "Installing dependencies mx-template-dapp..."
-yarn install
+set -e yarn install
 echo "Building mx-template-dapp..."
-yarn build:devnet
+set -e yarn build:devnet
 
 echo "Script executed successfully!"
