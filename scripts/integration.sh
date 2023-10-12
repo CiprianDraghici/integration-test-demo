@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e  # Exit immediately if a command exits with a non-zero status.
+
 echo "Installing git..."
 sudo apt-get update
 sudo apt-get install jq
@@ -35,5 +37,4 @@ yarn install
 echo "Building mx-template-dapp..."
 yarn build:devnet
 
-# Exit immediately if a command exits with a non-zero status.
-set -e
+echo "Script executed successfully!"
