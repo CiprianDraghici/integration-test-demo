@@ -10,7 +10,7 @@ git clone https://github.com/multiversx/mx-template-dapp.git
 echo "cd mx-template-dapp..."
 cd mx-template-dapp
 echo "git checkout main..."
-# TODO checkout main
+# TODO checkout development
 git checkout integration
 
 # Define the package name and the new version number
