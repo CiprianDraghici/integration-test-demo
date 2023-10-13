@@ -34,15 +34,12 @@ git clone https://github.com/multiversx/mx-template-dapp.git
 
 echo "cd mx-template-dapp..."
 cd mx-template-dapp
-echo "git checkout main..."
-# TODO checkout main
-git checkout integration
 
 echo "Installing dependencies mx-template-dapp..."
 yarn install
 
 echo "Linking mx-sdk-dapp..."
-yalc link @multiversx/sdk-dapp
+yalc add @multiversx/sdk-dapp
 
 echo "Building mx-template-dapp..."
 yarn build:devnet
