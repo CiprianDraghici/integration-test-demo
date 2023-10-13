@@ -17,6 +17,6 @@ jobs:
           ref: main
       - name: Run script file
         run: |
-          chmod +x ${GITHUB_WORKSPACE}/scripts/template-dapp-integration.sh
+          chmod +x ${GITHUB_WORKSPACE}/../scripts/template-dapp-integration.sh
           ${GITHUB_WORKSPACE}/scripts/template-dapp-integration.sh
         shell: bash
