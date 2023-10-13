@@ -17,6 +17,6 @@ jobs:
           ref: main
       - name: Run script file
         run: |
-          chmod +x ./scripts/template-dapp-integration.sh
-          ./scripts/template-dapp-integration.sh
+          chmod +x ./.github/scripts/template-dapp-integration.sh
+          ./.github/scripts/template-dapp-integration.sh
         shell: bash
