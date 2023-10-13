@@ -38,11 +38,11 @@ echo "git checkout main..."
 # TODO checkout main
 git checkout integration
 
-echo "Linking mx-sdk-dapp..."
-yalc link @multiversx/sdk-dapp
-
 echo "Installing dependencies mx-template-dapp-nextjs..."
 yarn install
+
+echo "Linking mx-sdk-dapp..."
+yalc add @multiversx/sdk-dapp
 
 echo "Building mx-template-dapp-nextjs..."
 yarn build-devnet
