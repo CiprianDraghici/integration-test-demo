@@ -1,1 +1,1 @@
-# integration-test-demo
+# sdk-dapp integration tests
