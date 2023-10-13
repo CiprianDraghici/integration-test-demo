@@ -1,15 +1,15 @@
-name: run-integration
+name: run-template-dapp-nextjs-integration
 
 on:
   push:
     # TODO [development]
     branches: [main]
   repository_dispatch:
-    types: run-integration
+    types: run-template-dapp-nextjs-integration
   workflow_dispatch:
 
 jobs:
-  run_integration_script:
+  run_template_dapp_nextjs_integration_script:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,6 +17,6 @@ jobs:
           ref: main
       - name: Run script file
         run: |
-          chmod +x ./scripts/integration.sh
-          ./scripts/integration.sh
+          chmod +x ./scripts/template-dapp-nextjs-integration.sh
+          ./scripts/template-dapp-nextjs-integration.sh
         shell: bash
